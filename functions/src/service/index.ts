@@ -46,4 +46,42 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
         
         return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);
     }
+
+    async translateContent(title: string, description: string): Promise<TransformSocialMediaContent> {
+        const systemPrompt = [
+            `請使用繁體中文，並以純文字格式（不包含任何註解或 Markdown）完成以下任務：
+
+1. 翻譯輸入的標題
+2. 翻譯輸入的摘要
+3. 提供五個與文章主題相關的標籤
+4. 請直接輸出結果，不需任何額外說明或格式符號。
+`
+        ];
+
+        const userPrompt = [
+            "輸入的標題為：" + title,
+            "輸入的摘要為：" + description,
+        ];
+
+        const schema: SchemaRequest  = {
+            type: SchemaType.OBJECT,
+            properties: {
+                title: {
+                    type: SchemaType.STRING,
+                },
+                description: {
+                    type: SchemaType.STRING,
+                },
+                tags: {
+                    type: SchemaType.ARRAY,
+                    items: {
+                        type: SchemaType.STRING,
+                    },
+                },
+            },
+            required: ["title", "description", "tags"]
+        };
+        
+        return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);
+    }   
 }
