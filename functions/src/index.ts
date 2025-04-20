@@ -9,6 +9,6 @@ const envConfig = getEnvironmentConfig();
 app.set('env', envConfig.environment);
 
 
-exports.mindfulMoments = onRequest({ 
+exports.index = onRequest({ 
     cors: true,
 }, app);   
