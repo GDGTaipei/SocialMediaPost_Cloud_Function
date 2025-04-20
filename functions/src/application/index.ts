@@ -29,7 +29,7 @@ app.post('/generateSocialMediaContent', async (req, res) => {
 
     const llmModel = new LLMModelImplement(llmService);
     const content = await GenerateSocialMediaContentUseCase(llmModel, article);
-    res.status(200).send(content);
+    res.status(200).send({content: content});
 });
 
 app.post('/translateSocialMediaContent', async (req, res) => {
@@ -42,7 +42,7 @@ app.post('/translateSocialMediaContent', async (req, res) => {
 
     const llmModel = new LLMModelImplement(llmService);
     const content = await TranslateSocialMediaContentUseCase(llmModel, title, description);
-    res.status(200).send(content);
+    res.status(200).send({content: content});
 });
 
 export { app };
