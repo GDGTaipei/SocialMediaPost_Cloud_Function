@@ -41,6 +41,7 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
                     },
                 },
             },
+            required: ["title", "description", "tags"]
         };
         
         return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);
