@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "deploy:staging": "firebase deploy --project staging --only functions",
+    "deploy:production": "firebase deploy --project production --only functions"
+  }
+}
