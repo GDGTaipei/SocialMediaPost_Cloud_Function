@@ -7,7 +7,7 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
     private model: string;
     constructor(llmModel: LLMModelInterface) {
         this.llmModel = llmModel;
-        this.model = "gemini-2.0-flash-001";
+        this.model = "gemini-2.0-flash-lite-001";
     }
     
     async generateContent(article: string): Promise<TransformSocialMediaContent> {
