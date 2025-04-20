@@ -17,7 +17,7 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
 
 1. 擷取文章標題（限15字以內）
 2. 撰寫約400字的文章摘要
-3. 提供五個與文章主題相關的標籤，格式為：#標籤 #標籤 #標籤 #標籤 #標籤
+3. 提供五個與文章主題相關的標籤
 4. 請直接輸出結果，不需任何額外說明或格式符號。`
         ];
 
