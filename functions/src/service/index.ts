@@ -84,4 +84,45 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
         
         return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);
     }   
+
+    async generateTags(article: string): Promise<string[]> {
+        const systemPrompt = [
+            `請使用繁體中文，並以純文字格式（不包含任何註解或 Markdown）完成以下任務：
+
+1. 提供五個與文章主題相關的標籤，格式為：#標籤 #標籤 #標籤 #標籤 #標籤
+2. 請直接輸出結果，不需任何額外說明或格式符號。`
+        ];
+
+        const userPrompt = [
+            "輸入的文章為：" + article,
+        ];
+        
+        const schema: SchemaRequest  = {
+            type: SchemaType.ARRAY,
+            items: {
+                type: SchemaType.STRING,
+            },
+        };
+        
+        return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);
+    }
+
+    async genSummary(article: string): Promise<string> {
+        const systemPrompt = [
+            `請使用繁體中文，並以純文字格式（不包含任何註解或 Markdown）完成以下任務：
+
+1. 提供文章的摘要，限100字以內
+2. 請直接輸出結果，不需任何額外說明或格式符號。`
+        ];
+
+        const userPrompt = [
+            "輸入的文章為：" + article,
+        ];
+        
+        const schema: SchemaRequest  = {
+            type: SchemaType.STRING,
+        };
+        
+        return this.llmModel.generateText(systemPrompt, userPrompt, this.model, schema);    
+    }
 }

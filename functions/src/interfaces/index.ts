@@ -18,6 +18,8 @@ export interface LLMModelInterface {
 export interface ContentGeneratorServiceInterface {
     generateContent: (article: string) => Promise<TransformSocialMediaContent>;
     translateContent: (title: string, description: string) => Promise<TransformSocialMediaContent>;
+    generateTags: (article: string) => Promise<string[]>;
+    genSummary: (article: string) => Promise<string>;
 }
 
 export interface GenerateSocialMediaContentUseCase {
