@@ -38,7 +38,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
           cd functions && npm install --include=dev
       - name: Build functions
         run: cd functions && npm run build
