@@ -26,7 +26,7 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
         const userPrompt = [
         `以下是一篇文章，請你以社群小編的角度撰寫吸引人的貼文內容，包括：
         - 一段吸睛開頭引起共鳴
-        - 精簡介紹文章的主題與重點
+        - 精簡介紹文章的主題與重點，內容400字
         - 鼓勵讀者留言或分享
         
         請用繁體中文、語氣自然親切
