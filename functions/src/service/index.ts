@@ -13,16 +13,25 @@ export class ContentGeneratorService implements ContentGeneratorServiceInterface
     async generateContent(article: string): Promise<TransformSocialMediaContent> {
         
         const systemPrompt = [
-            `請使用繁體中文，並以純文字格式（不包含任何註解或 Markdown）完成以下任務：
-
-1. 擷取文章標題（限15字以內）
-2. 撰寫約400字的文章摘要
-3. 提供五個與文章主題相關的標籤，格式為：#標籤 #標籤 #標籤 #標籤 #標籤
-4. 請直接輸出結果，不需任何額外說明或格式符號。`
+        `請使用繁體中文，並以純文字格式完成下列任務：
+        
+        1. 分析輸入文章的主題與重點脈絡
+        2. 擷取能代表整篇內容的標題（限15字以內）
+        3. 撰寫約400字的內容摘要，強調重點與邏輯脈絡
+        4. 提供五個與文章主題高度相關的社群標籤（格式為：#標籤 #標籤 #標籤 #標籤 #標籤）
+        
+        請直接輸出結果，不需任何額外說明、註解或格式符號。`
         ];
 
         const userPrompt = [
-            "輸入的文章為：" + article,
+        `以下是一篇文章，請你以社群小編的角度撰寫吸引人的貼文內容，包括：
+        - 一段吸睛開頭引起共鳴
+        - 精簡介紹文章的主題與重點
+        - 鼓勵讀者留言或分享
+        
+        請用繁體中文、語氣自然親切
+        
+        文章內容如下：${article}`
         ];
         
         const schema: SchemaRequest  = {
