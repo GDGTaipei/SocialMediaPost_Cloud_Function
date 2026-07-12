@@ -10,7 +10,7 @@ const environmentConfig = getEnvironmentConfig();
 
 const firebaseApp = initializeApp(environmentConfig.firebaseConfig);
 
-const llmService = getVertexAI(firebaseApp);
+const llmService = getVertexAI(firebaseApp, { location: 'us' });
 
 const app = express();
 
