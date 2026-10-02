@@ -32,6 +32,7 @@ jobs:
         env:
           CONFIG_JSON: ${{ secrets.FIREBASE_CONFIG_PRODUCTION }}
         run: |
+            echo "::add-mask::$CONFIG_JSON"
             printf 'CONFIG_JSON=%s\n' "$CONFIG_JSON" >> functions/.env
 
       - name: Install dependencies
